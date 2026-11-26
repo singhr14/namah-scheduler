@@ -58,12 +58,10 @@ class ElasticsearchAdapter:
             
             self._client = Elasticsearch(
                 hosts=[self.settings.es_url],
-                basic_auth=(self.settings.es_user, self.settings.es_pass),
+                http_auth=(self.settings.es_user, self.settings.es_pass),
                 request_timeout=self.settings.es_timeout,
                 verify_certs=False,
-                ssl_show_warn=False,
-                ssl_assert_hostname=False,
-                ssl_assert_fingerprint=None
+                ssl_show_warn=False
             )
             
             # Test connection by getting cluster info directly (more reliable than ping)
@@ -71,6 +69,7 @@ class ElasticsearchAdapter:
                 info = self._client.info()
                 logger.info(f"Connected to Elasticsearch cluster: {info['cluster_name']} (version: {info['version']['number']})")
             except Exception as e:
+                logger.error(f"Elasticsearch connection test failed. Error type: {type(e).__name__}, Details: {str(e)}")
                 raise ConnectionError(f"Failed to get cluster info: {str(e)}")
             
             # Ensure index exists with proper mapping

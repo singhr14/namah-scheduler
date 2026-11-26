@@ -147,7 +147,6 @@ Thumbs.db
 # Docker
 .dockerignore
 .vscode
-.env                           # Contains actual credentials
 logs/                          # Runtime logs
 state/                         # Runtime state files
 test_state.json               # Runtime state

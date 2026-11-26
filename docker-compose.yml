@@ -5,6 +5,9 @@ services:
     build: .
     container_name: storysync
     env_file: .env
+    network_mode: bridge
+    extra_hosts:
+      - "search-dev.aumnamah.com:80.225.196.246"
     volumes:
       - ./logs:/app/logs
       - ./state:/app/state

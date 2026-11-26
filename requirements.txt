@@ -1,6 +1,6 @@
 # Core dependencies
 pymongo>=4.5.0
-elasticsearch>=8.10.0
+elasticsearch==7.17.9
 schedule>=1.2.0
 python-dotenv>=1.0.0
 pydantic>=2.0.0

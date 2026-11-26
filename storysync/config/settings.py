@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     
     # MongoDB Configuration
     mongo_uri: str = Field(
-        default="mongodb://storyUser:Open%241234@13.127.252.2:27017/?authSource=namahStories",
+        default="mongodb://storyUser:Open%241234@3.6.145.196:27017/namahStories?authSource=namahStories",
         description="MongoDB connection URI"
     )
     mongo_db: str = Field(default="namahStories", description="MongoDB database name")
